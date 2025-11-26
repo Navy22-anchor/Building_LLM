@@ -14,7 +14,7 @@ tokenized_text = [item for item in result if item.strip()]
 #-- 토큰 ID로 변환 --
 
 all_words = sorted(set(tokenized_text))
+#-- 특수 문맥 토큰 추가하기
+all_words.extend(['<|endoftext|>','<|unk|>'])
 #단순히 인덱싱을 하는 행위로 그 목적은 단어를 생성할때 이용을 하게 된다.
-voca_dict = {token:index for token, index in enumerate(all_words)}
-for i in range(50):
-    print('token:',voca_dict[i],'index:',i)
+voca_dict = {token:index for index, token in enumerate(all_words)}
