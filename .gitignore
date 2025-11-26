@@ -1,0 +1,11 @@
+
+.vscode/
+
+__pycache__/
+
+# 가상환경
+venv/
+.env/
+.venv/
+
+utils.py
