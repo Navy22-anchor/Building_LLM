@@ -18,3 +18,18 @@ all_words = sorted(set(tokenized_text))
 all_words.extend(['<|endoftext|>','<|unk|>'])
 #단순히 인덱싱을 하는 행위로 그 목적은 단어를 생성할때 이용을 하게 된다.
 voca_dict = {token:index for index, token in enumerate(all_words)}
+
+from importlib.metadata import version
+import tiktoken
+print('tiktoken version :',version('tiktoken'))
+
+text = 'Architecture is the art of giving form to time, carving light and shadow into walls so that emotions can momentarily rest. <|endoftext|> It is where gravity learns to float, where materials begin to listen, and where human longing quietly discovers its own shape in space.'
+#어떤 인코더가 좋은지 비교 분석 필요
+enc = tiktoken.get_encoding('gpt2')
+
+token_index = enc.encode(text=text,allowed_special={'<|endoftext|>'})
+
+print('string->index : ',token_index)
+
+index_token = enc.decode(token_index)
+print(index_token)
