@@ -9,6 +9,12 @@ with open(file_path,'r',encoding='utf-8') as f:
 #모델 개발시 한국어에 대한 토큰화 기준을 찾아 볼것
 result = re.split(r'''([,.?!_"()\:']|--|\s)''',raw_text)
 
-result = [item for item in result if item.strip()]
+tokenized_text = [item for item in result if item.strip()]
 
-print(result[:30])
+#-- 토큰 ID로 변환 --
+
+all_words = sorted(set(tokenized_text))
+#단순히 인덱싱을 하는 행위로 그 목적은 단어를 생성할때 이용을 하게 된다.
+voca_dict = {token:index for token, index in enumerate(all_words)}
+for i in range(50):
+    print('token:',voca_dict[i],'index:',i)
