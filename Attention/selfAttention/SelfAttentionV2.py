@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 
-class SelfAttentionV1(nn.Module):
+class SelfAttentionV2(nn.Module):
     def __init__(self, d_in, d_out, bias=False) :
         super().__init__()
 
@@ -10,9 +10,9 @@ class SelfAttentionV1(nn.Module):
         self.W_v = nn.Linear(d_in, d_out,bias=bias)
     
     def forward(self,X):
-        Query = X@ self.W_q 
-        Key = X@ self.W_k
-        Value = X@ self.W_v
+        Query = self.W_q(X)
+        Key = self.W_k(X)
+        Value = self.W_v(X)
 
         omega_2 = Query @ Key.T
         d_k=Key.shape[-1]
