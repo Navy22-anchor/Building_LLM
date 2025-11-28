@@ -33,5 +33,13 @@ print(keys)
 
 key_2 = keys[1]
 
-omega = q_2.dot(key_2)
-print(omega)
+omega_2 = q_2 @ keys.T
+
+print(omega_2)
+d_k=keys.shape[-1]
+
+omega_2_weight = torch.softmax(omega_2/d_k**0.5,dim=-1)
+print(omega_2_weight)
+
+context_2 = omega_2_weight @ values
+print(context_2)
