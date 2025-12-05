@@ -48,3 +48,13 @@ ca = CausalAttention(3,2,context_length,0.0)
 
 context_vecs = ca(batch)
 print('Context_vecs.shape', context_vecs.shape)
+
+from ..Multihead.Multihead import MultiheadAttention
+
+torch.manual_seed(123)
+context_length = batch.shape[1]
+
+mha= MultiheadAttention(3,2,context_length,2,0.0)
+context_vecs=mha(batch)
+print(context_vecs)
+print('context_vec.shape',context_vecs.shape)
