@@ -36,3 +36,15 @@ example = torch.ones(6,6)
 print(dropout(example))
 
 print(dropout(masked_simple_norm))
+
+batch = torch.stack((inputs,inputs),dim=0)
+print(batch.shape)
+
+from .causalAttentionV1 import CausalAttention
+torch.manual_seed(123)
+context_length = batch.shape[1]
+
+ca = CausalAttention(3,2,context_length,0.0)
+
+context_vecs = ca(batch)
+print('Context_vecs.shape', context_vecs.shape)
