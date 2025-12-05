@@ -58,3 +58,13 @@ mha= MultiheadAttention(3,2,context_length,2,0.0)
 context_vecs=mha(batch)
 print(context_vecs)
 print('context_vec.shape',context_vecs.shape)
+
+from ..Multihead.MultiHeadAttention import MultiHeadAttention
+
+torch.manual_seed(123)
+batch_size, context_length, d_in = batch.shape
+d_out =2 
+mha = MultiHeadAttention(d_in,d_out,context_length,2,0.0)
+context_vecs = mha(batch)
+print(context_vecs)
+print('context.shape:',context_vecs.shape)
