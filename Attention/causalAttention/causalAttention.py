@@ -1,5 +1,5 @@
 import torch
-from Attention.selfAttention.SelfAttentionV2 import SelfAttentionV2
+from ..selfAttention.SelfAttentionV2 import SelfAttentionV2
 
 inputs = torch.tensor(
   [[0.43, 0.15, 0.89], # Your     (x^1)
@@ -28,3 +28,11 @@ masked_simple = omega_weight*mask_simple
 row_sums = masked_simple.sum(dim=-1,keepdim=True)
 masked_simple_norm = masked_simple/row_sums
 print(masked_simple_norm)
+
+torch.manual_seed(123)
+dropout = torch.nn.Dropout(0.5)
+example = torch.ones(6,6)
+
+print(dropout(example))
+
+print(dropout(masked_simple_norm))
