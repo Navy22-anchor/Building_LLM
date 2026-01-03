@@ -1,6 +1,6 @@
 from .LayerNorm import LayerNorm
 from .FeedFowardN.FFNetwork import FFNetwork
-from ..Attention.Multihead.MultiHeadAttention import MultiHeadAttention
+from Attention.Multihead.MultiHeadAttention import MultiHeadAttention
 import torch.nn as nn
 
 class TransformerBlock(nn.Module):
